@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
-export function Carousel({ children, className }) {
+export function Carousel(props: { children: ReactNode, className: string }) {
+  const { children, className } = props
   return <div className={`relative ${className}`}>{children}</div>;
 }
 
-export function CarouselContent({ children }) {
-  return <div className="flex">{children}</div>;
+export function CarouselContent(props: { children: ReactNode }) {
+  return <div className="flex">{props.children}</div>;
 }
 
-export function CarouselItem({ children }) {
-  return <div className="flex-shrink-0">{children}</div>;
+export function CarouselItem(props: { children: ReactElement }) {
+  return <div className="flex-shrink-0">{props.children}</div>;
 }
 
 export function CarouselPrevious() {

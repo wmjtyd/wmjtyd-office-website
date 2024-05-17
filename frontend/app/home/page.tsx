@@ -176,7 +176,7 @@ export default function HomePage() {
                     华为在今日发布了全新的 Mate 50 系列手机,包括 Mate 50 Pro 和 Mate 50 RS 两款旗舰机型。
                   </p>
                   <Link className="text-[#0055b8] font-medium mt-2 inline-block" href="#">
-                    了解更多 >
+                    {"了解更多 >"}
                   </Link>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
                     华为在今日发布了全新的 MateBook X Pro 笔记本电脑,采用全新的设计和强大的性能。
                   </p>
                   <Link className="text-[#0055b8] font-medium mt-2 inline-block" href="#">
-                    了解更多 >
+                    {"了解更多 >"}
                   </Link>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export default function HomePage() {
                     华为在今日发布了全新的 HUAWEI Watch 3 智能手表,提供全面的健康和运动监测功能。
                   </p>
                   <Link className="text-[#0055b8] font-medium mt-2 inline-block" href="#">
-                    了解更多 >
+                    {"了解更多 >"}
                   </Link>
                 </div>
               </div>
@@ -279,7 +279,7 @@ export default function HomePage() {
   );
 }
 
-function FacebookIcon(props) {
+function FacebookIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -298,7 +298,7 @@ function FacebookIcon(props) {
   );
 }
 
-function InstagramIcon(props) {
+function InstagramIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -319,7 +319,7 @@ function InstagramIcon(props) {
   );
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -340,7 +340,7 @@ function MenuIcon(props) {
   );
 }
 
-function TwitterIcon(props) {
+function TwitterIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
