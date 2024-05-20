@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "req_inquiries",
+  "info": {
+    "singularName": "req-inquiry",
+    "pluralName": "req-inquiries",
+    "displayName": "req_inquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "screenshot": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "contact": {
+      "type": "string"
+    },
+    "createdtime": {
+      "type": "datetime"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "submitted",
+        "progress",
+        "completed"
+      ]
+    }
+  }
+}

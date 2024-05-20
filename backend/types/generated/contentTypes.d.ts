@@ -746,6 +746,40 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
   };
 }
 
+export interface ApiReqInquiryReqInquiry extends Schema.CollectionType {
+  collectionName: 'req_inquiries';
+  info: {
+    singularName: 'req-inquiry';
+    pluralName: 'req-inquiries';
+    displayName: 'req_inquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.String;
+    screenshot: Attribute.Media;
+    contact: Attribute.String;
+    createdtime: Attribute.DateTime;
+    status: Attribute.Enumeration<['submitted', 'progress', 'completed']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::req-inquiry.req-inquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::req-inquiry.req-inquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRevenueRevenue extends Schema.CollectionType {
   collectionName: 'revenues';
   info: {
@@ -796,6 +830,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::customer.customer': ApiCustomerCustomer;
       'api::invoice.invoice': ApiInvoiceInvoice;
+      'api::req-inquiry.req-inquiry': ApiReqInquiryReqInquiry;
       'api::revenue.revenue': ApiRevenueRevenue;
     }
   }
