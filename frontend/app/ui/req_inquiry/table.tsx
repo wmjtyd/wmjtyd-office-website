@@ -47,7 +47,7 @@ export default async function ReqInquiriesTable({
                     {reqInquiry.contact}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {formatDateToLocal(reqInquiry.createdtime)}
+                    {formatDateToLocal(reqInquiry.createdAt)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <ReqInquiryStatus status={reqInquiry.status} />
