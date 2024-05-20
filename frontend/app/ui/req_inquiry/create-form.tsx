@@ -1,5 +1,6 @@
 "use client";
-import { useFormState } from "react-dom";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { createReqInquiry } from "@/app/lib/req_inquiry-actions";
 import Link from "next/link";
 import {
@@ -10,11 +11,26 @@ import {
 import { Button } from "../button";
 
 export default function Form() {
-  const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createReqInquiry, initialState);
+  const router = useRouter();
+  const [description, setDescription] = useState("");
+  const [contact, setContact] = useState("");
+  const [status, setStatus] = useState("submitted");
+  const [state, setState] = useState({ message: null, errors: {} });
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const response = await createReqInquiry({ description, contact, status });
+    if (response.errors) {
+      setState({ message: null, errors: response.errors });
+    } else {
+      setState({ message: "Inquiry created successfully", errors: {} });
+      router.push("/dashboard/req_inquiry");
+    }
+  };
 
   return (
-    <form action={dispatch}>
+    <form onSubmit={handleSubmit}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Description */}
         <div className="mb-4">
@@ -26,6 +42,8 @@ export default function Form() {
               id="description"
               name="description"
               type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               placeholder="Enter description"
               aria-describedby="description-error"
@@ -55,6 +73,8 @@ export default function Form() {
               id="contact"
               name="contact"
               type="text"
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
               className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               placeholder="Enter contact"
               aria-describedby="contact-error"
@@ -87,6 +107,8 @@ export default function Form() {
                   name="status"
                   type="radio"
                   value="submitted"
+                  checked={status === "submitted"}
+                  onChange={() => setStatus("submitted")}
                   className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
                 />
                 <label
@@ -102,6 +124,8 @@ export default function Form() {
                   name="status"
                   type="radio"
                   value="progress"
+                  checked={status === "progress"}
+                  onChange={() => setStatus("progress")}
                   className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
                 />
                 <label
@@ -117,6 +141,8 @@ export default function Form() {
                   name="status"
                   type="radio"
                   value="completed"
+                  checked={status === "completed"}
+                  onChange={() => setStatus("completed")}
                   className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
                 />
                 <label

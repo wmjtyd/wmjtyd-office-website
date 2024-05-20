@@ -26,52 +26,31 @@ const ReqInquirySchema = z.object({
 });
 
 const CreateReqInquiry = ReqInquirySchema.omit({ id: true, createdtime: true });
-export async function createReqInquiry(prevState: State, formData: FormData) {
+export async function createReqInquiry({ description, contact, status }) {
   const authToken = cookies().get("jwt")?.value;
   if (!authToken) throw new Error("Not Authorized.");
 
-  const validatedFields = CreateReqInquiry.safeParse({
-    description: formData.get("description"),
-    contact: formData.get("contact"),
-    status: formData.get("status"),
-  });
-
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Req Inquiry.",
-    };
-  }
-
-  const { description, contact, status } = validatedFields.data;
-  const createdtime = new Date().toISOString();
-
-  const dataToSend = {
-    data: {
-      description,
-      contact,
-      status,
-      createdtime,
-    },
-  };
-
+  const validatedData = CreateReqInquiry.parse({ description, contact, status });
+  
   try {
-    const response = await fetch(STRAPI_URL + "/api/req-inquiries", {
-      method: "POST",
-      body: JSON.stringify(dataToSend),
+    const response = await fetch(STRAPI_URL + '/api/req-inquiries', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + authToken,
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + authToken,
       },
+      body: JSON.stringify(validatedData),
     });
+
     const data = await response.json();
-    if (!response.ok) return { ok: false, error: data.error.message, data: null };
-    if (response.ok && data.error) return { ok: false, error: data.error.message, data: null };
-  } catch (err) {
-    return { error: "Database Error: Failed to Create Req Inquiry." };
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to create inquiry');
+    }
+    return data;
+  } catch (error) {
+    console.error('Error creating inquiry:', error);
+    return { errors: { message: error.message } };
   }
-  revalidatePath("/dashboard/req_inquiry");
-  redirect("/dashboard/req_inquiry");
 }
 
 const UpdateReqInquiry = ReqInquirySchema.omit({ createdtime: true });
