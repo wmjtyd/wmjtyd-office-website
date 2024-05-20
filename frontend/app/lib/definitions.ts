@@ -90,4 +90,29 @@ export type InvoiceForm = {
   status: 'pending' | 'paid';
 };
 
+// Adding req_inquiries types
+export type ReqInquiry = {
+  id: string;
+  description: string;
+  screenshot: {
+    url: string;
+  };
+  contact: string;
+  createdtime: string;
+  status: 'submitted' | 'progress' | 'completed';
+};
 
+export type ReqInquiriesTable = {
+  id: string;
+  description: string;
+  contact: string;
+  createdtime: string;
+  status: 'submitted' | 'progress' | 'completed';
+};
+
+export type ReqInquiryForm = {
+  id: string;
+  description: string;
+  contact: string;
+  status: 'submitted' | 'progress' | 'completed';
+};

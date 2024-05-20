@@ -23,6 +23,11 @@ const links = [
     href: '/dashboard/customers', 
     icon: DocumentDuplicateIcon,
   },
+  { 
+    name: 'requirements inquiry', 
+    href: '/dashboard/req_inquiry', 
+    icon: DocumentDuplicateIcon,
+  },
   { name: "Home Page", href: "/home", icon: HomeIcon }, // 新增链接
 ];
 
