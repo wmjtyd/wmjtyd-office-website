@@ -752,6 +752,7 @@ export interface ApiReqInquiryReqInquiry extends Schema.CollectionType {
     singularName: 'req-inquiry';
     pluralName: 'req-inquiries';
     displayName: 'req_inquiry';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -762,6 +763,11 @@ export interface ApiReqInquiryReqInquiry extends Schema.CollectionType {
     contact: Attribute.String;
     createdtime: Attribute.DateTime;
     status: Attribute.Enumeration<['submitted', 'progress', 'completed']>;
+    createdByUser: Attribute.Relation<
+      'api::req-inquiry.req-inquiry',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

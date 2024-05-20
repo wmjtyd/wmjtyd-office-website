@@ -4,7 +4,8 @@
   "info": {
     "singularName": "req-inquiry",
     "pluralName": "req-inquiries",
-    "displayName": "req_inquiry"
+    "displayName": "req_inquiry",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,15 @@
       "type": "string"
     },
     "screenshot": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "contact": {
       "type": "string"
@@ -37,6 +39,11 @@
         "progress",
         "completed"
       ]
+    },
+    "createdByUser": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
