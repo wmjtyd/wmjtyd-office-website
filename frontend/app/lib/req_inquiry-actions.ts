@@ -25,8 +25,14 @@ const ReqInquirySchema = z.object({
   createdtime: z.string(),
 });
 
+type ReqInquiryParams = {
+  description: string;
+  contact: string;
+  status: string;
+};
+
 const CreateReqInquiry = ReqInquirySchema.omit({ id: true, createdtime: true });
-export async function createReqInquiry({ description, contact, status }) {
+export async function createReqInquiry({ description, contact, status }: ReqInquiryParams) {
   const authToken = cookies().get("jwt")?.value;
   if (!authToken) throw new Error("Not Authorized.");
 
@@ -49,8 +55,12 @@ export async function createReqInquiry({ description, contact, status }) {
     return data;
   } catch (error) {
     console.error('Error creating inquiry:', error);
-    return { errors: { message: error.message } };
-  }
+    if (error instanceof Error) {
+        return { errors: { message: error.message } };
+    } else {
+        return { errors: { message: 'An unknown error occurred' } };
+    }
+}
 }
 
 const UpdateReqInquiry = ReqInquirySchema.omit({ createdtime: true });

@@ -10,12 +10,21 @@ import {
 } from "@heroicons/react/24/outline";
 import { Button } from "../button";
 
+type State = {
+  message: string | null;
+  errors: {
+    description?: string[];
+    contact?: string[];
+    status?: string[];
+  };
+};
+
 export default function Form() {
   const router = useRouter();
   const [description, setDescription] = useState("");
   const [contact, setContact] = useState("");
   const [status, setStatus] = useState("submitted");
-  const [state, setState] = useState({ message: null, errors: {} });
+  const [state, setState] = useState<State>({ message: null, errors: {} });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
