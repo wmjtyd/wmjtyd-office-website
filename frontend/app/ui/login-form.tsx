@@ -89,7 +89,7 @@ export default function LoginForm() {
             </div>
           ) : null}
         </div>
-        <Link className="text-muted text-gray-400" href="/">
+        <Link className="text-muted text-gray-400" href="/home">
           back
         </Link>
       </div>

@@ -1,7 +1,7 @@
 import Layout from './layout';
 import Link from 'next/link';
 import { Button } from './buttons';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './carousel';
+import { Carousel, CarouselItem } from './carousel';
 
 export default function HomePage() {
   return (
@@ -11,16 +11,16 @@ export default function HomePage() {
           <Link href="#">
             <div className="flex items-center gap-2">
               <img
-                alt="Huawei Logo"
+                alt="wmjtyd Logo"
                 height={40}
-                src="/placeholder.svg"
+                src="/logo.png"
                 style={{
                   aspectRatio: "40/40",
                   objectFit: "cover",
                 }}
                 width={40}
               />
-              <span className="text-lg font-bold">Huawei</span>
+              <span className="text-lg font-bold">wmjtyd IT Technical Team</span>
             </div>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
@@ -56,49 +56,47 @@ export default function HomePage() {
         <section className="bg-[#0055b8] text-white py-12 md:py-24 flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
           <div className="max-w-2xl space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold">探索无限可能</h1>
-            <p className="text-lg">华为致力于为全球用户提供优质的产品和服务,让数字世界惠及每个人、每个家庭、每个组织。</p>
-            <div className="flex gap-4">
-              <Button variant="primary">了解更多</Button>
-              <Button variant="outline">立即购买</Button>
-            </div>
+            <p className="text-lg">精通有道IT技术团队，成立于2012年，由一群对技术充满热情的开发者组成。我们致力于技术创新和社会进步，通过开源共享和协作推动技术发展。专业提供大数据服务、定制软件开发和人工智能解决方案，包括数据挖掘、ERP系统定制，以及大模型集成应用。我们的目标是利用先进的技术解决方案，优化用户体验，提升业务效率，并帮助企业或个人实现数字化转型。加入我们，共创美好未来。</p>
+            {/*
+              <div className="flex gap-4">
+                <Button variant="primary">了解更多</Button>
+                <Button variant="outline">立即购买</Button>
+              </div>
+            */}
           </div>
           <Carousel className="w-full md:w-[50%] mt-8 md:mt-0">
-            <CarouselContent>
-              <CarouselItem>
-                <img
-                  alt="Hero Image 1"
-                  className="aspect-[16/9] object-cover"
-                  height={450}
-                  src="/placeholder.svg"
-                  width={800}
-                />
-              </CarouselItem>
-              <CarouselItem>
-                <img
-                  alt="Hero Image 2"
-                  className="aspect-[16/9] object-cover"
-                  height={450}
-                  src="/placeholder.svg"
-                  width={800}
-                />
-              </CarouselItem>
-              <CarouselItem>
-                <img
-                  alt="Hero Image 3"
-                  className="aspect-[16/9] object-cover"
-                  height={450}
-                  src="/placeholder.svg"
-                  width={800}
-                />
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselItem>
+              <img
+                alt="Hero Image 1"
+                className="object-cover w-full h-full"
+                src="/placeholder.svg"
+                width={800}
+                height={450}
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <img
+                alt="Hero Image 2"
+                className="object-cover w-full h-full"
+                src="/placeholder.svg"
+                width={800}
+                height={450}
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <img
+                alt="Hero Image 3"
+                className="object-cover w-full h-full"
+                src="/placeholder.svg"
+                width={800}
+                height={450}
+              />
+            </CarouselItem>
           </Carousel>
         </section>
         <section className="bg-gray-100 py-12 md:py-24 px-6 md:px-12">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">我们的产品</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">项目案例</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img
@@ -149,6 +147,58 @@ export default function HomePage() {
                 <div className="p-4">
                   <h3 className="text-xl font-bold mb-2">HUAWEI Watch 3</h3>
                   <p className="text-gray-600">时尚智能手表,提供全面的健康和运动监测功能。</p>
+                </div>
+              </div>
+              {/* Additional rows of products */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <img
+                  alt="Product 4"
+                  className="w-full h-48 object-cover"
+                  height={300}
+                  src="/placeholder.svg"
+                  style={{
+                    aspectRatio: "400/300",
+                    objectFit: "cover",
+                  }}
+                  width={400}
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">HUAWEI FreeBuds Pro</h3>
+                  <p className="text-gray-600">无线耳机,提供卓越的音质和降噪功能。</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <img
+                  alt="Product 5"
+                  className="w-full h-48 object-cover"
+                  height={300}
+                  src="/placeholder.svg"
+                  style={{
+                    aspectRatio: "400/300",
+                    objectFit: "cover",
+                  }}
+                  width={400}
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">HUAWEI MatePad Pro</h3>
+                  <p className="text-gray-600">高性能平板电脑,适合办公和娱乐。</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <img
+                  alt="Product 6"
+                  className="w-full h-48 object-cover"
+                  height={300}
+                  src="/placeholder.svg"
+                  style={{
+                    aspectRatio: "400/300",
+                    objectFit: "cover",
+                  }}
+                  width={400}
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">HUAWEI P50 Pocket</h3>
+                  <p className="text-gray-600">折叠屏手机,提供创新的设计和强大的性能。</p>
                 </div>
               </div>
             </div>
@@ -231,16 +281,16 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <img
-                alt="Huawei Logo"
+                alt="wmjtyd Logo"
                 height={40}
-                src="/placeholder.svg"
+                src="/logo.png"
                 style={{
                   aspectRatio: "40/40",
                   objectFit: "cover",
                 }}
                 width={40}
               />
-              <span className="text-lg font-bold">Huawei</span>
+              <span className="text-lg font-bold">wmjtyd IT Technical Team</span>
             </div>
             <nav className="flex flex-col md:flex-row items-center gap-4">
               <Link className="hover:underline" href="#">
